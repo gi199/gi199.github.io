@@ -1,5 +1,77 @@
-<html>
+<!DOCTYPE html">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>咕咕嘎嘎 Github版</title>
+    <meta property="og:description" content="建议前往gugugaga.net">
+    <meta property="og:url" content="https://gi199.github.io">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://gi199.github.io/thumbnail_192x192.png">
+    <meta property="og:image:type" content="image/png">
+    <meta name="theme-color" content="#ffd7d7">
+    <link rel="icon" href="https://gi199.github.io/favicon.ico" type="image/x-icon">
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background: black;
+        }
+
+        video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: 100vh;
+            /* always fill the viewport height */
+            width: auto;
+            /* let width grow/shrink with aspect ratio */
+            transform: translate(-50%, -50%);
+            /* keeps the video centered */
+            /* object-fit is no longer needed because we’re explicitly
+       controlling the dimensions, but leaving it in doesn’t hurt: */
+            object-fit: contain;
+            display: none;
+            /* Hide until user clicks Start */
+        }
+
+        #startButton {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px 40px;
+            font-size: 24px;
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            z-index: 10;
+        }
+    </style>
+  </head>
   <body>
-    <source src="gugugaga.mp4" type="video/mp4">
+    <video id="videoPlayer" playsinline="">
+        <source src="gugugaga.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <button id="startButton">咕咕嘎嘎？</button>
+    <script>
+      
+        const button = document.getElementById('startButton');
+        const video = document.getElementById('videoPlayer');
+
+        button.addEventListener('click', () => {
+            button.style.display = 'none';
+            video.style.display = 'block';
+            video.muted = false;
+            video.volume = 0.2; // Set volume to 20%
+            video.play();
+        });
+    </script>
   </body>
 </html>
